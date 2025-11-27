@@ -3,11 +3,6 @@
 #include <pthread.h>
 #include <unistd.h>
 
-//
-//---------------------------------------------------------
-//      Estructura de Barrera Reutilizable (Monitor)
-//---------------------------------------------------------
-//
 typedef struct {
     int count;              // Nº de hebras que han llegado a la barrera
     int N;                  // Nº total de hebras que deben sincronizarse
@@ -16,11 +11,6 @@ typedef struct {
     pthread_cond_t cond;    // Variable de condición para esperar/broadcast
 } barrier_t;
 
-//
-//---------------------------------------------------------
-//      Inicializar barrera
-//---------------------------------------------------------
-//
 void barrier_init(barrier_t *b, int N){
     b->count = 0;           // Ninguna hebra ha llegado aún
     b->N = N;               // Total de hebras a sincronizar
@@ -29,42 +19,29 @@ void barrier_init(barrier_t *b, int N){
     pthread_cond_init(&b->cond, NULL);
 }
 
-//
-//---------------------------------------------------------
-//      Destruir Barrera
-//---------------------------------------------------------
-//
 void barrier_destroy(barrier_t *b){
     pthread_mutex_destroy(&b->mutex);
     pthread_cond_destroy(&b->cond);
 }
 
-//
-//---------------------------------------------------------
-//      Operación wait(): punto de sincronización
-//---------------------------------------------------------
-//
 void barrier_wait(barrier_t *b){
     pthread_mutex_lock(&b->mutex);
 
-    int etapa_local = b->etapa;  
-    // Guardamos el número de etapa actual.
-    // Esto sirve para detectar cuándo la barrera avanza de etapa.
+    int etapa_local = b->etapa;  // Esto sirve para detectar cuándo la barrera avanza de etapa
 
     b->count++;  // Esta hebra llegó al punto de sincronización
 
     if(b->count < b->N){
-        // Si NO soy la última hebra en llegar:
-        // Debo esperar hasta que la etapa cambie.
+        // Si NO soy la última hebra en llegar debo esperar hasta que la etapa cambie.
         while(etapa_local == b->etapa){
             // Espera condicional libera el mutex y suspende la hebra
             pthread_cond_wait(&b->cond, &b->mutex);
         }
     } else {
         // Si SOY la última hebra:
-        // - reiniciamos contador
-        // - avanzamos de etapa
-        // - despertamos a las demás hebras
+        // Reiniciamos contador
+        // Avanzamos de etapa
+        // Despertamos a las demás hebras
         b->count = 0;
         b->etapa++;
         pthread_cond_broadcast(&b->cond);
@@ -73,11 +50,6 @@ void barrier_wait(barrier_t *b){
     pthread_mutex_unlock(&b->mutex);
 }
 
-//
-//---------------------------------------------------------
-//      Código de prueba que demuestra correctitud
-//---------------------------------------------------------
-//
 #define THREADS 8
 #define ETAPAS  2
 
@@ -89,12 +61,11 @@ void *worker(void *arg){
     for(int etapa = 0; etapa < ETAPAS; etapa++){
         printf("Hilo %d -> alcanzó etapa %d\n", id, etapa);
 
-        // Punto de sincronización
         barrier_wait(&barrera);
 
         printf("Hilo %d -> pasó la barrera en etapa %d\n", id, etapa);
 
-        usleep(100000); // Pausa opcional para ver el orden más claramente
+        usleep(100000); 
     }
 
     return NULL;
