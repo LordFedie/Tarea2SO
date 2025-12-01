@@ -45,7 +45,7 @@ void *worker(void *arg){
         printf("[Hebra %d] pasó barrera en etapa %d\n", tid, etapa);
         fflush(stdout);
         
-        // Pequeña pausa adicional para visualizar mejor
+        // Pequeña pausa para visualizar mejor
         usleep(10000);
     }
     
@@ -94,10 +94,7 @@ int main(int argc, char *argv[]){
         return 1;
     }
     
-    // Mostrar configuración
-    printf("=================================================\n");
-    printf("  Verificación de Barrera Reutilizable\n");
-    printf("=================================================\n");
+    printf("VERIFICACIÓN DE BARRERA REUTILIZABLE\n");
     printf("Número de hebras: %d\n", num_hebras);
     printf("Número de etapas: %d\n", num_etapas);
     
