@@ -2,7 +2,7 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -pthread -O2
-TARGET = main
+TARGET = verificacion
 OBJS = verificacion.o barrera_monitor.o
 
 # Regla por defecto

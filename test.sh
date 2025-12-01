@@ -2,9 +2,7 @@
 
 # Script de pruebas para verificar la barrera reutilizable
 
-echo "======================================================"
-echo "  Script de Pruebas - Barrera Reutilizable"
-echo "======================================================"
+echo "SCRIPT DE PRUEBAS: Barrera Reutilizable"
 echo ""
 
 # Compilar si es necesario
@@ -21,13 +19,13 @@ run_test() {
     echo "------------------------------------------------------"
     echo "Prueba: $n hebras, $e etapas"
     echo "------------------------------------------------------"
-    ./main $n $e
+    ./verificacion $n $e
     echo ""
     sleep 1
 }
 
 # Casos de prueba
-echo "Ejecutando casos de prueba..."
+echo "De aquí en adelante ejecutamos variados casos de prueba..."
 echo ""
 
 # Caso 1: Configuración mínima
@@ -45,16 +43,13 @@ run_test 8 3
 # Caso 5: Muchas etapas
 run_test 4 6
 
-# Caso 6: Configuración grande
+# Caso 6: Configuración más grande
 run_test 10 5
 
-echo "======================================================"
-echo "  Todas las pruebas completadas"
-echo "======================================================"
+echo "¡TODAS LAS PRUEBAS FUERON COMPLETADAS :D!"
 echo ""
-echo "Verificación manual:"
+echo "Verificación:"
 echo "Para cada prueba, confirme que para cada etapa e:"
 echo "  - Todas las hebras imprimen 'esperando en etapa e'"
 echo "  - LUEGO todas imprimen 'pasó barrera en etapa e'"
 echo "  - Ninguna hebra pasa antes de que todas lleguen"
-echo "======================================================"
