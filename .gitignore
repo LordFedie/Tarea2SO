@@ -1,0 +1,26 @@
+# Compilación
+*.o
+main
+
+# Archivos de backup
+*~
+*.swp
+*.swo
+
+# Archivos generados por el sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos temporales
+tmp/
+*.tmp
+
+# Archivos del editor
+.vscode/
+.idea/
+
+# Archivos de pruebas
+test-output/
