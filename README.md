@@ -21,4 +21,7 @@ Compilar con: chmod +x test.sh
 Ejecutar con: ./test.sh
 
 # PARTE II
-Act 1: 
+Act 1: sim.c
+
+# Sobre la Compilación
+Escribir en la terminal "gcc sim.c -o sim.exe", luego ejecutar con "./sim.exe Nmarcos tamañomarco [--verbose] traza.txt", donde "Nmarcos" corresponde al número de marcos disponibles, "tamañomarco" el tamaño del marco en bytes, --verbose es un argumento opcional para mostrar paso a paso el proceso de traducción y traza.txt el archivo con las direcciones.
