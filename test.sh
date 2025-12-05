@@ -6,7 +6,7 @@ echo "SCRIPT DE PRUEBAS: Barrera Reutilizable"
 echo ""
 
 # Compilar si es necesario
-if [ ! -f "./verificacion" ]; then
+if [ ! -f "./main" ]; then
     echo "Compilando el proyecto..."
     make
     echo ""

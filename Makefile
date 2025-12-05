@@ -2,8 +2,8 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -pthread -O2
-TARGET = verificacion
-OBJS = verificacion.o barrera_monitor.o
+TARGET = main
+OBJS = main.o barrera_monitor.o
 
 # Regla por defecto
 all: $(TARGET)
@@ -12,9 +12,10 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-# Compilar verificacion.o
-verificacion.o: verificacion.c barrera_monitor.h
-	$(CC) $(CFLAGS) -c verificacion.c
+# Compilar main.o
+main.o: main.c barrera_monitor.h
+	$(CC) $(CFLAGS) -c main
+.c
 
 # Compilar barrier.o
 barrera_monitor.o: barrera_monitor.c barrera_monitor.h
