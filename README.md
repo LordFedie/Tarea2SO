@@ -20,5 +20,5 @@ Se pueden encontrar más comandos para probarlo dentro del mismo Makefile
 Compilar con: chmod +x test.sh
 Ejecutar con: ./test.sh
 
-# PARTE II
+# PARTE II:
 Act 1: 
