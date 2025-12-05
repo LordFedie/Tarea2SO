@@ -14,8 +14,7 @@ $(TARGET): $(OBJS)
 
 # Compilar main.o
 main.o: main.c barrera_monitor.h
-	$(CC) $(CFLAGS) -c main
-.c
+	$(CC) $(CFLAGS) -c main.c
 
 # Compilar barrier.o
 barrera_monitor.o: barrera_monitor.c barrera_monitor.h

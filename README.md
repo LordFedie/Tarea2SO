@@ -3,13 +3,13 @@ Tarea 2 de sistemas operativos
 
 #  PARTE I:
 Act 1: barrera.c
-Act 2: barrera_monitor.c barrera_monitor.h Makefile test.sh (script de pruebas)
+Act 2: main.c barrera_monitor.c barrera_monitor.h Makefile test.sh(script de pruebas)
 
 # Sobre la Compilación
 Escribir make en la terminal
-./verificacion prueba con los valores por defecto de 5 hebras y 4 etapas
+./main prueba con los valores por defecto de 5 hebras y 4 etapas
 o 
-./verificacion 8 3 para probar con 8 hebras y 3 etapas
+./main 8 3 para probar con 8 hebras y 3 etapas
 
 # Sobre el Makefile
 make : ejecuta y crea archivos.o
