@@ -19,7 +19,7 @@ run_test() {
     echo "------------------------------------------------------"
     echo "Prueba: $n hebras, $e etapas"
     echo "------------------------------------------------------"
-    ./verificacion $n $e
+    ./main $n $e
     echo ""
     sleep 1
 }
